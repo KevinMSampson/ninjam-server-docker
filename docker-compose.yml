@@ -1,0 +1,9 @@
+ninjam:
+        image: zeppelinux/ninjam-server:v0.084
+        ports:
+                - "2049:2049"
+        container_name: ninjam-server
+        restart: always
+        volumes:
+                - ./cclicense.txt:/usr/local/ninjam/cclicense.txt
+                - ./config.cfg:/usr/local/ninjam/config.cfg
