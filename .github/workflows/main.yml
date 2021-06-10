@@ -33,5 +33,10 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo #!/bin/sh
-          echo ${test_secret}
-          echo ${test_secret:0:2}:${test_secret:2:${#test_secret}}
+          export MYTEST="${{ secrets.SECRET_KEY }}"
+          echo ${MYTEST}
+          echo ${MYTEST:0:2}:${MYTEST:2:${#MYTEST}}
+          echo ${{ secrets.SECRET_KEY }}
+          echo ${{ secrets.SECRET_KEY:0:2 }}:${{ secrets.SECRET_KEY:2:${{ #secrets.SECRET_KEY }} }}
+          echo ${{ secrets.SECRET_KEY:0:2 }}:${{ secrets.SECRET_KEY:2:10 }}
+          
