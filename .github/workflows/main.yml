@@ -35,8 +35,6 @@ jobs:
           echo #!/bin/sh
           export MYTEST="${{ secrets.SECRET_KEY }}"
           echo ${MYTEST} | head -c 7
-          // echo ${MYTEST:0:2}:${MYTEST:2:${#MYTEST}}
+          echo ${MYTEST:0:2}:${MYTEST:2:${#MYTEST}}
           echo ${{ secrets.SECRET_KEY }}
-          echo ${{ secrets.SECRET_KEY:0:2 }}:${{ secrets.SECRET_KEY:2:${{ #secrets.SECRET_KEY }} }}
-          echo ${{ secrets.SECRET_KEY:0:2 }}:${{ secrets.SECRET_KEY:2:10 }}
           
