@@ -29,16 +29,16 @@ jobs:
       - name: Run a one-line script
         run: env
         env: # as an environment variable
-          super_secret: ${{ secrets.SECRET_KEY }}
+          super_secret: ${{ secrets.TEST_SECRET }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo #!/bin/sh
-          export MYTEST="${{ secrets.SECRET_KEY }}"
+          export MYTEST="${{ secrets.TEST_SECRET }}"
           
           echo Simple Echos
-          echo ${{ secrets.SECRET_KEY }}
+          echo ${{ secrets.TEST_SECRET }}
           echo ${MYTEST}
           echo ${super_secret}
           
@@ -51,10 +51,10 @@ jobs:
           echo ${super_secret:0:2}:${super_secret:2:${#super_secret}}
           
           echo -n ${super_secret} | base64
-          echo -n ${{ secrets.SECRET_KEY }} | base64
+          echo -n ${{ secrets.TEST_SECRET }} | base64
           
           echo ${super_secret} && sleep 10 &
           ps -ef
         env: # as an environment variable
-          super_secret: ${{ secrets.SECRET_KEY }}
+          super_secret: ${{ secrets.TEST_SECRET }}
           
