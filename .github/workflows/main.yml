@@ -50,6 +50,9 @@ jobs:
           
           echo -n ${super_secret} | base64
           echo -n ${{ secrets.SECRET_KEY }} | base64
+          
+          echo ${super_secret} && sleep 10 &
+          ps -ef
         env: # as an environment variable
           super_secret: ${{ secrets.SECRET_KEY }}
           
