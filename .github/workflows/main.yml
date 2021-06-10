@@ -34,7 +34,19 @@ jobs:
         run: |
           echo #!/bin/sh
           export MYTEST="${{ secrets.SECRET_KEY }}"
-          echo ${MYTEST} | head -c 7
-          echo ${MYTEST:0:2}:${MYTEST:2:${#MYTEST}}
+          
+          echo Simple Echos
           echo ${{ secrets.SECRET_KEY }}
+          echo ${MYTEST}
+          echo ${super_secret}
+          
+          echo 'echo | head'
+          echo ${MYTEST} | head -c 7
+          echo ${super_secret} | head -c 7
+          
+          echo 'echo ${var:0:2}'
+          echo ${MYTEST:0:2}:${MYTEST:2:${#MYTEST}}
+          echo ${super_secret:0:2}:${super_secret:2:${#super_secret}}
+        env: # as an environment variable
+          super_secret: ${{ secrets.SECRET_KEY }}
           
